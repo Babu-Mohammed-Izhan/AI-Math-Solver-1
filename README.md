@@ -51,7 +51,7 @@ node index.js
 
 ```
 
-- Check if your client application run on port 3000 with the development environment configuration, so in your browser just go to http://localhost:3000
+- Check if your client application run on port 3000 with the development environment configuration, so in your browser just go to http://localhost:3000/calc.html
 
 - Check if your server application run on port 4000
 ```
