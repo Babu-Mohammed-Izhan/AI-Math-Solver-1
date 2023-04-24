@@ -39,6 +39,7 @@ const BotResponse = ({ response, chatLogRef }) => {
 
   return (
     <>
+      <h4 style={{ marginTop: "0px" }}>AI Math Wizard</h4>
       <pre>
         {botResoponse}
         {botResoponse === response ? "" : "|"}

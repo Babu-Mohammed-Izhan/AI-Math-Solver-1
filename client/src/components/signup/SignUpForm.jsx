@@ -75,7 +75,7 @@ const SignupForm = () => {
 
   return (
     <div className="signupFormContainer">
-      <SvgComponent w={50} h={50} stroke="#202123" />
+      <SvgComponent w={200} h={100} stroke="#202123" />
       <h1>Create your account</h1>
       <form onSubmit={handleSignup}>
         <input

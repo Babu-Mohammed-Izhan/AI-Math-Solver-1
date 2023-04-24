@@ -4,10 +4,13 @@ const express = require("express");
 const app = express();
 const port = 4000;
 
+console.log(process.env.OPEN_API_KEY);
+
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.OPEN_API_KEY,
 });
+
 const openai = new OpenAIApi(configuration);
 
 // adding body-parser and cors

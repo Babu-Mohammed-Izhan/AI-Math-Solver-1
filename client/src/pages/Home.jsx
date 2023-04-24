@@ -163,8 +163,8 @@ const Home = () => {
 
                   <div className="botMessageMainContainer">
                     <div className="botMessageWrapper">
-                      <Avatar bg="#11a27f" className="openaiSVG">
-                        <SvgComponent w={41} h={41} />
+                      <Avatar bg="transparent" className="openaiSVG">
+                        <SvgComponent w={200} h={100} />
                       </Avatar>
                       {chat.botMessage ? (
                         <div id="botMessage">

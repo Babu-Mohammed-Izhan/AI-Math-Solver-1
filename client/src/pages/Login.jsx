@@ -23,9 +23,9 @@ const Login = () => {
       {!isSignupFormVisible ? (
         <div className="loginContainer">
           <div className="loginContainerContent">
-            <SvgComponent w={50} h={50} />
-            <h1>Welcome to Talkbot</h1>
-            <p>Your Ultimate AI Assistant</p>
+            <SvgComponent w={200} h={100} />
+            <h1 style={{ color: "black" }}>Welcome to Math AI Wizard</h1>
+            <p style={{ color: "black" }}>Your Ultimate AI Math Solver</p>
             <div className="loginButtonWrapper">
               <Button text="Log in" handleClick={() => handleClick("login")} />
               <Button

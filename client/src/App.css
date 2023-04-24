@@ -1,7 +1,7 @@
 :root {
   --text-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  --primary-bg-color: #282c34;
+  --primary-bg-color: #ffffff;
   --secondary-bg-color: #575969;
 }
 
@@ -138,17 +138,11 @@ nav svg {
 }
 .chatBox {
   flex: 1;
-  background-color: #353540;
+  background-color: #ffffff;
   position: relative;
   line-height: 24px;
-  color: #d1d5db;
+  color: #000000;
   font-size: 16px;
-}
-#introsection::before,
-#introsection::after {
-  content: "<HomePage/>";
-  float: left;
-  color: rgb(0, 134, 244);
 }
 #introsection {
   text-align: left;
@@ -215,7 +209,8 @@ nav svg {
 }
 .botMessageMainContainer {
   width: 100%;
-  background-color: #444654;
+  color: black;
+  background-color: #cecece;
   position: relative;
 }
 .botMessageWrapper {
@@ -274,36 +269,35 @@ nav svg {
   width: 80%;
   max-height: 200px;
   height: 55px;
-  background-color: #41414e;
-  border-radius: 5px;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
+  background-color: #ffffff;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   display: flex;
 }
 .inputPrompttTextarea {
   padding: 10px;
   flex: 1;
   resize: none;
-  background-color: #41414e;
-  color: #fff;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
   font-size: 16px;
   outline: none;
   border: none;
   overflow-y: hidden;
 }
 form button {
-  background: rgb(65, 65, 78);
+  background: rgb(255, 255, 255);
   border: none;
   position: absolute;
   top: 20%;
   right: 15px;
   width: 35px;
-  height: 45px;
+  height: 35px;
 }
 
 @media (hover: hover) {
   button:hover {
     cursor: pointer;
-    background: #212023;
+    background: #000000;
     border-radius: 20%;
   }
 }
@@ -348,13 +342,13 @@ form button {
   padding: 10px 25px;
   border-radius: 7px;
   color: #fff;
-  background: #10a37f;
+  background: #7010a3;
   border: none;
   font-size: 16px;
   cursor: pointer;
 }
 #loginButton:hover {
-  background-color: rgb(26, 127, 100);
+  background-color: rgb(88, 26, 127);
 }
 
 @media screen and (min-width: 768px) {
