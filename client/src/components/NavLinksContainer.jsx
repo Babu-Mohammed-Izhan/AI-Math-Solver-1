@@ -1,6 +1,5 @@
 import React from "react";
 import NavLinks from "./NavLink";
-import BuyMeACoffeeButton from "./BuyMeACoffeeButton";
 
 const NavLinksContainer = ({ chatLog, setChatLog }) => {
   return (
