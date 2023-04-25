@@ -116,13 +116,13 @@ const Home = () => {
         </nav>
       )}
 
-      <aside className="sideMenu">
+      {/* <aside className="sideMenu">
         <NavContent
           chatLog={chatLog}
           setChatLog={setChatLog}
           setShowMenu={setShowMenu}
         />
-      </aside>
+      </aside> */}
 
       <section className="chatBox">
         {chatLog.length > 0 ? (
