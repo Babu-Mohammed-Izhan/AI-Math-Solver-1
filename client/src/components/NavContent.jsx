@@ -15,7 +15,7 @@ const NavContent = ({ chatLog, setChatLog, setShowMenu }) => {
             )
         )}
       </div>
-      <NavLinksContainer chatLog={chatLog} setChatLog={setChatLog} />
+      {/* <NavLinksContainer chatLog={chatLog} setChatLog={setChatLog} /> */}
     </>
   );
 };

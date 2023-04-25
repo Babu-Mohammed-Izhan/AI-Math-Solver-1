@@ -38,18 +38,17 @@ const BotResponse = ({ response, chatLogRef }) => {
   const stopPrinting = () => setIsPrinting(!isPrinting);
 
   return (
-    <>
-      <h4 style={{ marginTop: "0px" }}>AI Math Wizard</h4>
+    <div style={{ marginTop: "50px" }}>
       <pre>
         {botResoponse}
         {botResoponse === response ? "" : "|"}
       </pre>
-      {isButtonVisible && (
+      {/* {isButtonVisible && (
         <button className="stop-messgage" onClick={stopPrinting}>
           {isPrinting ? "Stop Message" : "Regenerate Message"}
         </button>
-      )}
-    </>
+      )} */}
+    </div>
   );
 };
 

@@ -17,16 +17,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route
-          index
-          exact
-          path="/"
-          element={
-            <RequireAuth>
-              <Home />
-            </RequireAuth>
-          }
-        />
+        <Route index exact path="/" element={<Home />} />
         <Route exact path="auth/login" element={<Login />} />
         <Route exact path="login" element={<LoginForm />} />
       </Routes>
