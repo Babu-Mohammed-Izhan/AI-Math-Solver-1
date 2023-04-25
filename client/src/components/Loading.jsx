@@ -1,19 +1,19 @@
 import React from "react";
-import PulseLoader from "react-spinners/PulseLoader";
+import { PuffLoader } from "react-spinners";
 
 const Loading = () => {
   const override = {
-    color: "#fff",
+    color: "#000",
     loading: true,
   };
 
   return (
     <div>
-      <PulseLoader
+      <PuffLoader
         color={override.color}
         loading={override.loading}
         cssOverride={override}
-        size={5}
+        size={20}
         aria-label="Loading Spinner"
         data-testid="loader"
       />

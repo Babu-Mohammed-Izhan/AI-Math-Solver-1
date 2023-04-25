@@ -147,6 +147,8 @@ nav svg {
 #introsection {
   text-align: left;
   padding: 20px;
+  width: 80%;
+  margin: auto;
 }
 #introsection h1 {
   padding-top: 20px;
@@ -210,7 +212,7 @@ nav svg {
 .botMessageMainContainer {
   width: 100%;
   color: black;
-  background-color: #cecece;
+  background-color: #f3f9fd;
   position: relative;
 }
 .botMessageWrapper {
@@ -270,8 +272,9 @@ nav svg {
   max-height: 200px;
   height: 55px;
   background-color: #ffffff;
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  box-shadow: #3498db 0px 0px 0px 2px , #3498db 0px 4px 6px -1px, #3498db 0px 1px 0px inset;
   display: flex;
+  border-radius: 10px;
 }
 .inputPrompttTextarea {
   padding: 10px;
@@ -283,6 +286,7 @@ nav svg {
   outline: none;
   border: none;
   overflow-y: hidden;
+  border-radius: 10px;
 }
 form button {
   background: rgb(255, 255, 255);
@@ -297,7 +301,7 @@ form button {
 @media (hover: hover) {
   button:hover {
     cursor: pointer;
-    background: #000000;
+    background: #3498db;
     border-radius: 20%;
   }
 }

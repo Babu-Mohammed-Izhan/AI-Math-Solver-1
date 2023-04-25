@@ -9,7 +9,7 @@ const BotResponse = ({ response, chatLogRef }) => {
   useEffect(() => {
     let index = 1;
     let msg = setInterval(() => {
-      if (response !== " - The Ultimate AI Assistant") {
+      if (response !== " - The Ultimate AI Math Solver") {
         setIsButtonVisible(true);
       }
       if (!isPrinting) {
@@ -37,8 +37,11 @@ const BotResponse = ({ response, chatLogRef }) => {
 
   const stopPrinting = () => setIsPrinting(!isPrinting);
 
+  const color =
+    response === " - The Ultimate AI Math Solver" ? "#3498db" : "#000000";
+
   return (
-    <div style={{ marginTop: "50px" }}>
+    <div style={{ marginTop: "50px", color: color }}>
       <pre>
         {botResoponse}
         {botResoponse === response ? "" : "|"}
