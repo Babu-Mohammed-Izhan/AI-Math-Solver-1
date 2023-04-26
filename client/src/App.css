@@ -279,7 +279,6 @@ nav svg {
 .inputPrompttTextarea {
   padding: 10px;
   flex: 1;
-  resize: none;
   background-color: #ffffff;
   color: rgb(0, 0, 0);
   font-size: 16px;

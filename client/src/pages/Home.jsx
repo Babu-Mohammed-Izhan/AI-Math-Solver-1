@@ -24,6 +24,7 @@ const Home = () => {
         // Set responseFromAPI to true before making the fetch request
         setReponseFromAPI(true);
         setChatLog([...chatLog, { chatPrompt: inputPrompt }]);
+        setInputPrompt("");
         callAPI();
 
         // hide the keyboard in mobile devices
@@ -189,16 +190,16 @@ const Home = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="inputPromptWrapper">
-            <input
+            <textarea
               name="inputPrompt"
               id=""
               className="inputPrompttTextarea"
               type="text"
-              rows="1"
+              rows="3"
               value={inputPrompt}
               onChange={(e) => setInputPrompt(e.target.value)}
               autoFocus
-            ></input>
+            ></textarea>
             <button aria-label="form submit" type="submit">
               <svg
                 fill="#ADACBF"
