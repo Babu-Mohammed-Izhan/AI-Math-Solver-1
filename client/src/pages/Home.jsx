@@ -33,10 +33,10 @@ const Home = () => {
 
       async function callAPI() {
         try {
-          const response = await fetch("http://localhost:4000", {
+          const response = await fetch("http://localhost:5000", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: inputPrompt }),
+            body: JSON.stringify({ message: inputPrompt, history: chatLog }),
           });
           const data = await response.json();
           setChatLog([
@@ -69,6 +69,13 @@ const Home = () => {
 
     return () => {};
   }, []);
+
+  const onEnterPress = (e) => {
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      e.preventDefault();
+      setInputPrompt(e.target.value);
+    }
+  };
 
   return (
     <>
@@ -199,6 +206,7 @@ const Home = () => {
               value={inputPrompt}
               onChange={(e) => setInputPrompt(e.target.value)}
               autoFocus
+              onKeyDown={onEnterPress}
             ></textarea>
             <button aria-label="form submit" type="submit">
               <svg

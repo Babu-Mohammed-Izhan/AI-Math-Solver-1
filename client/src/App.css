@@ -404,6 +404,8 @@ form button {
   #introsection {
     padding: 20px 20px 40px 20px;
     font-size: 14px;
+    width: 80%;
+    margin: auto;
   }
   #introsection h1,
   pre {
