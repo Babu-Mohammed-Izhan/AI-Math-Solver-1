@@ -11,16 +11,16 @@ def embed_text(text):
     
     embedded_tokens = [token.vector for token in doc]
     
-    max_length = 50
-    padded_embeddings = np.zeros((max_length, 300))
+    max_length = 2
+    padded_embeddings = np.zeros((max_length, 96))
     padded_embeddings[:min(len(embedded_tokens), max_length)] = embedded_tokens[:max_length]
     
-    tensor = tf.constant(padded_embeddings.reshape((1, max_length, 300)))
+    tensor = tf.constant(padded_embeddings.reshape((max_length, 96)))
     
     return tensor
 
 
-df = pd.read_csv("math_problems.csv")
+df = pd.read_csv("./math_problems.csv", delimiter=";")
 
 
 train_df = df.sample(frac=0.8, random_state=42)
@@ -28,7 +28,7 @@ val_df = df.drop(train_df.index)
 
 
 model = keras.Sequential([
-    keras.layers.LSTM(64, input_shape=(50, 300)),
+    keras.layers.LSTM(64, input_shape=(2, 96)),
     keras.layers.Dense(128, activation="relu"),
     keras.layers.Dense(1)
 ])
@@ -39,12 +39,12 @@ model.compile(loss="mse", optimizer="adam")
 
 def train_model():
 
-    X_train = np.array([embed_text(text) for text in train_df["text"]])
-    y_train = np.array(train_df["answer"])
+    X_train = train_df["Problem"]
+    y_train = train_df["Solution"]
     
 
-    X_val = np.array([embed_text(text) for text in val_df["text"]])
-    y_val = np.array(val_df["answer"])
+    X_val = val_df["Problem"]
+    y_val = val_df["Solution"]
     
 
     model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=10, batch_size=32)
@@ -56,7 +56,7 @@ def train_model():
 train_model()
 
 
-def ai(text):
+def solve_ai(text):
 
     tensor = embed_text(text)
     

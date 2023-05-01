@@ -2,6 +2,7 @@ from flask import jsonify
 import openai
 import os
 import sys
+from _ai import *
 
 openai.api_key = os.getenv("OPEN_API_KEY")
 
@@ -33,6 +34,8 @@ def ai(data):
     chat_history = data["history"]
 
     user_input = data["message"]
+
+    data = solve_ai(user_input)
 
     chatgpt_raw_output = chatcompletion(user_input, chat_history)
 
