@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import ReactMarkdown from 'react-markdown'
 import { useState } from "react";
 
 const BotResponse = ({ response, chatLogRef }) => {
@@ -31,7 +32,7 @@ const BotResponse = ({ response, chatLogRef }) => {
           block: "end",
         });
       }
-    }, 50);
+    }, 10);
     return () => clearInterval(msg); // clear interval on component unmount
   }, [chatLogRef, response, isPrinting]);
 
@@ -43,8 +44,9 @@ const BotResponse = ({ response, chatLogRef }) => {
   return (
     <div style={{ marginTop: "50px", color: color }}>
       <pre>
+        <ReactMarkdown>
         {botResoponse}
-        {botResoponse === response ? "" : "|"}
+        </ReactMarkdown>
       </pre>
       {/* {isButtonVisible && (
         <button className="stop-messgage" onClick={stopPrinting}>
