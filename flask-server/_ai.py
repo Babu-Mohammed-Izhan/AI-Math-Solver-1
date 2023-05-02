@@ -23,11 +23,11 @@ def embed_text(text):
 df = pd.read_csv("./math_problems.csv", delimiter=";")
 
 
-train_data = df.sample(frac=0.8, random_state=42)
-test_data = df.drop(train_data.index)
+train_data = [embed_text(x) for x in df['Problem']]
+test_data = [embed_text(x) for x in df['Problem']]
 
-model = keras.Sequential([
-    tf.keras.layers.Dense(64, activation='relu', input_shape=(None, 2)),
+model = keras.Sequential([ 
+    tf.keras.layers.Dense(64, activation='relu', input_shape=(None, 1)),
     tf.keras.layers.Dense(32, activation='relu'),
     tf.keras.layers.Dense(1, activation='linear')
 ])
@@ -38,21 +38,20 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 
 def train_model():
 
-    train_labels = train_data['Solution']
-    test_labels = test_data['Solution']
+    train_labels = [embed_text(x) for x in df['Solution']]
+    test_labels = [embed_text(x) for x in df['Solution']]
 
-    model.fit(train_data, train_labels, epochs=10, validation_data=(test_data, test_labels), verbose=1)
+    model.fit(train_data[0], train_labels[0], epochs=10, validation_data=(test_data[0], test_labels[0]), verbose=1)
 
-    test_loss, test_acc = model.evaluate(test_data, test_labels, verbose=2)
-    print('\nTest accuracy:', test_acc)
+    model.evaluate(test_data[20], test_labels[20], verbose=1)
 
     model.save_weights("math_model.h5")
 
-train_model()
-
 def solve_ai(text):
 
-    prediction = model.predict(text)  
+    train_model()
+
+    prediction = model.predict(embed_text(text["message"]))  
     
     return prediction
 
