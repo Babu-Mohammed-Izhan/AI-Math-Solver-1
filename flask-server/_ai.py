@@ -23,45 +23,53 @@ def embed_text(text):
 df = pd.read_csv("./math_problems.csv", delimiter=";")
 
 
-train_df = df.sample(frac=0.8, random_state=42)
-val_df = df.drop(train_df.index)
+train_data = df.sample(frac=0.8, random_state=42)
+test_data = df.drop(train_data.index)
 
+tokenizer = tf.keras.preprocessing.text.Tokenizer(oov_token="<OOV>")
+tokenizer.fit_on_texts(train_data['Problem'])
+train_sequences = tokenizer.texts_to_sequences(train_data['Problem'])
+test_sequences = tokenizer.texts_to_sequences(test_data['Problem'])
+
+
+max_len = 100
 
 model = keras.Sequential([
-    keras.layers.LSTM(64, input_shape=(2, 96)),
-    keras.layers.Dense(128, activation="relu"),
+    keras.layers.Embedding(len(tokenizer.word_index)+1, 64, input_length=max_len),
+    keras.layers.GlobalAveragePooling1D(),
+    keras.layers.Dense(64, activation='relu'),
     keras.layers.Dense(1)
 ])
 
 
-model.compile(loss="mse", optimizer="adam")
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 
 def train_model():
 
-    X_train = train_df["Problem"]
-    y_train = train_df["Solution"]
-    
+    max_len = 100
+    train_padded = keras.preprocessing.sequence.pad_sequences(train_sequences, maxlen=max_len, padding='post', truncating='post')
+    test_padded = keras.preprocessing.sequence.pad_sequences(test_sequences, maxlen=max_len, padding='post', truncating='post')
 
-    X_val = val_df["Problem"]
-    y_val = val_df["Solution"]
-    
 
-    model.fit(X_train, y_train, validation_data=(X_val, y_val), epochs=10, batch_size=32)
-    
+    train_labels = train_data['Solution']
+    test_labels = test_data['Solution']
+
+    model.fit(train_padded, train_labels, epochs=10, validation_data=(test_padded, test_labels), verbose=1)
+
+    test_loss, test_acc = model.evaluate(test_padded, test_labels, verbose=2)
+    print('\nTest accuracy:', test_acc)
 
     model.save_weights("math_model.h5")
 
-
-train_model()
-
-
 def solve_ai(text):
 
-    tensor = embed_text(text)
+    train_model()
+
+    example_seq = tokenizer.texts_to_sequences(text)
+    example_padded = tf.keras.preprocessing.sequence.pad_sequences(example_seq, maxlen=max_len, padding='post', truncating='post')
+    prediction = model.predict(example_padded)  
     
-    answer = model.predict(tensor)[0][0]
-    
-    return answer
+    return prediction
 
 
