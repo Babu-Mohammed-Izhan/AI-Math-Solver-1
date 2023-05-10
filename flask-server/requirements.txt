@@ -1,0 +1,9 @@
+Flask
+Flask_Cors
+numpy
+openai
+pandas
+python-dotenv
+spacy
+tensorflow
+Gunicorn

@@ -33,11 +33,14 @@ const Home = () => {
 
       async function callAPI() {
         try {
-          const response = await fetch("http://localhost:5000", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: inputPrompt, history: chatLog }),
-          });
+          const response = await fetch(
+            "https://ai-math-solver-backend.onrender.com/",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ message: inputPrompt, history: chatLog }),
+            }
+          );
           const data = await response.json();
           setChatLog([
             ...chatLog,
