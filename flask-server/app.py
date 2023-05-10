@@ -11,7 +11,6 @@ app = Flask(__name__)
 
 CORS(app, support_credentials=True)
 
-unittest.main()
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
