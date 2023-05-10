@@ -75,8 +75,7 @@ const Home = () => {
 
   const onEnterPress = (e) => {
     if (e.keyCode == 13 && e.shiftKey == false) {
-      e.preventDefault();
-      setInputPrompt(e.target.value);
+      handleSubmit(e);
     }
   };
 
